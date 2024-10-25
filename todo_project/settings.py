@@ -22,14 +22,14 @@ django_heroku.settings(locals())
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings - unsuitable for productiondjango-insecure-+89y0%3jzke&iie_4_zh#=zmh8+v_0=&5!e+5hrbg%c@u^jw27
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+89y0%3jzke&iie_4_zh#=zmh8+v_0=&5!e+5hrbg%c@u^jw27'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
