@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tasks_app/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Мои задачи</title>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <img src="{% static 'tasks_app/logo.png' %}" alt="AIO Logo" class="logo">    
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{% url 'task_create' %}"><i class="fas fa-plus"></i> Добавить задачу</a></li>
+                    <li><a href="{% url 'task_inbox' %}"><i class="fas fa-inbox"></i> Входящие</a></li>
+                    <li><a href="{% url 'task_today' %}"><i class="fas fa-calendar-day"></i> Сегодня</a></li>
+                    <li><a href="{% url 'task_upcoming' %}"><i class="fas fa-calendar-alt"></i> Предстоящее</a></li>
+                    <li><a href="{% url 'completed_tasks' %}"><i class="fas fa-check"></i> Выполненные</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content" id="content">
+            <header class="header">
+                <h1>Ваши Задачи</h1>
+                <p>Эффективно управляйте своими делами с помощью AIO</p>
+            </header>
+            <section class="task-section">
+                <ul class="task-list">
+                    {% for task in tasks %}
+                        <li class="task-item {% if task.completed %}completed{% endif %}">
+                            <div>
+                                <span class="task-title">
+                                    {% if task.completed %}
+                                        <s>{{ task.title }}</s> <!-- Зачёркиваем выполненные задачи -->
+                                    {% else %}
+                                        {{ task.title }}
+                                    {% endif %}
+                                </span>
+                                — 
+                                <span class="task-date">
+                                    {% if task.completed %}
+                                        Выполнено до: {{ task.due_date }}
+                                    {% else %}
+                                        Выполнить до: {{ task.due_date }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="task-actions">
+                                <a class="btn edit" href="{% url 'task_edit' task.pk %}"><i class="fas fa-edit"></i> Редактировать</a>
+                                <a class="btn delete" href="{% url 'task_delete' task.pk %}"><i class="fas fa-trash-alt"></i> Удалить</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="task-create" style="text-align: center; margin-top: 20px;">
+                    <a href="{% url 'task_create' %}" class="btn create"><i class="fas fa-plus"></i> Создать новую задачу</a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>© 2024 AIO - Your Time, Your Tasks.</p>
+    </footer>
+    <script src="{% static 'tasks_app/scripts.js' %}"></script>
+</body>
+</html>

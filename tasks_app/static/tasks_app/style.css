@@ -1,0 +1,181 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    margin-left: 20%; /* Сдвиг контента, чтобы не пересекаться с боковой панелью */
+    width: calc(100% - 20%); /* Остаточная ширина */
+    padding-left: 20px;
+    background: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #151515;
+    padding: 5px;
+    color: #ffffff;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    height: 200px;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.nav-menu ul li {
+    margin: 15px 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #7ED957;
+    font-weight: 700;
+}
+
+
+
+.content.expanded {
+    margin-left: 0;
+    width: 100%;
+}
+
+.header {
+    background: #151515;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    width: calc(100% - 20px);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    background: #1e1e1e;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    color: #7ED957;
+    font-weight: 700;
+}
+
+.task-actions .btn {
+    margin-left: 10px;
+    padding: 8px 15px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: #7ED957;
+    color: #151515;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn:hover {
+    background-color: #66cc00;
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #7ED957;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #7ED957;
+    border-radius: 5px;
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+.form-check-input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.footer {
+    background: #151515;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.button-group {
+    display: flex;                
+    justify-content: center;      
+    margin-top: 20px;             
+}
+
+.button-group .btn {
+    margin: 0 10px;               
+}
+

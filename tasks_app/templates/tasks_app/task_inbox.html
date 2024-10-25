@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Входящие задачи</title>
+    <link rel="stylesheet" href="{% static 'tasks_app/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <img src="{% static 'tasks_app/logo.png' %}" alt="AIO Logo" class="logo">
+
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{% url 'task_create' %}"><i class="fas fa-plus"></i> Добавить задачу</a></li>
+                    <li><a href="{% url 'task_inbox' %}"><i class="fas fa-inbox"></i> Входящие</a></li>
+                    <li><a href="{% url 'task_today' %}"><i class="fas fa-calendar-day"></i> Сегодня</a></li>
+                    <li><a href="{% url 'task_upcoming' %}"><i class="fas fa-calendar-alt"></i> Предстоящее</a></li>
+                    <li><a href="{% url 'completed_tasks' %}"><i class="fas fa-check"></i> Выполненные</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content" id="content">
+            <header class="header">
+                <h1>Входящие задачи</h1>
+            </header>
+            
+            <ul>
+                {% for task in tasks %}
+                    <li>{{ task.title }} - {{ task.due_date }}</li>
+                {% empty %}
+                    <li>Нет входящих задач.</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'task_list' %}" class="btn"><i class="fas fa-arrow-left"></i> Назад к задачам</a>
+        </main>    
+    </div>    
+    
+</body>
+</html>
